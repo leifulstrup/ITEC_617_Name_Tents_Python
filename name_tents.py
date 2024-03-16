@@ -19,7 +19,7 @@ def select_file():
 
 
 # Function to create name tents PDF
-def create_name_tents(first_name, last_name, pdf_file):
+def create_name_tents(first_name, last_name, pdf_file, class_name="ITEC-617 Spring 2024"):
     # Create a PDF file
     c = canvas.Canvas(pdf_file, pagesize=landscape(letter))
     width, height = landscape(letter)
@@ -94,6 +94,7 @@ def collect_student_names(csv_file):
 
 #%%
 def main():
+    class_name="ITEC-617 Spring 2024"
     # Example usage
     # Use file dialog to select the CSV file
     csv_file = select_file()
@@ -105,7 +106,7 @@ def main():
             first_name, last_name = name.split(' ', 1)
             file_name = f"{last_name}_{first_name}.pdf"
             pdf_file = os.path.join('name_tents', file_name)
-            create_name_tents(first_name, last_name, pdf_file)
+            create_name_tents(first_name, last_name, pdf_file, class_name)
             print(f"PDF file '{pdf_file}' has been created.")
     else:
         print("File selection was cancelled.")
